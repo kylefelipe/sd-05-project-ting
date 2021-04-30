@@ -1,5 +1,4 @@
 import sys
-from os.path import isfile
 
 
 def txt_importer(path_file):
