@@ -32,10 +32,3 @@ def file_metadata(instance, position):
         sys.stderr.write("Posição inválida\n")
     else:
         sys.stdout.write(item)
-
-
-if __name__ == "__main__":
-    proj = Queue()
-    process("statics/arquivo_teste.txt", proj)
-    
-    
