@@ -7,7 +7,7 @@ class Queue:
         """Aqui irá sua implementação"""
         return len(self._fila)
 
-    def enqueue(self, value=0):
+    def enqueue(self, value):
         """Aqui irá sua implementação"""
         self._fila.append(value)
 
