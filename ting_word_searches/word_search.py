@@ -2,7 +2,7 @@ from ting_file_management.file_process import process
 from ting_file_management.queue import Queue
 
 
-def exists_word(word, instance):
+def exists_word(word, instance, return_line=False):
     """Aqui irá sua implementação"""
     mtw = []
     for i in range(len(instance)):
@@ -10,10 +10,13 @@ def exists_word(word, instance):
         word_found = {"palavra": word,
                       "arquivo": file["nome_do_arquivo"],
                       "ocorrencias": []}
-        lines = [row.lower() for row in file["linhas_do_arquivo"]]
-        for index, line in enumerate(lines):
-            if word.lower() in line:
-                word_found["ocorrencias"].append({"linha": index + 1})
+        # lines = [row.lower() for row in file["linhas_do_arquivo"]]
+        for index, line in enumerate(file["linhas_do_arquivo"]):
+            if word.lower() in line.lower():
+                sub_item = {"linha": index + 1}
+                if return_line:
+                    sub_item["conteudo"] = line
+                word_found["ocorrencias"].append(sub_item)
         if len(word_found['ocorrencias']):
             mtw.append(word_found)
     return mtw
@@ -21,9 +24,4 @@ def exists_word(word, instance):
 
 def search_by_word(word, instance):
     """Aqui irá sua implementação"""
-
-
-if __name__ == '__main__':
-    project = Queue()
-    process("statics/nome_pedro.txt", project)
-    word = exists_word("Pedro", project)
+    return exists_word(word, instance, return_line=True)
