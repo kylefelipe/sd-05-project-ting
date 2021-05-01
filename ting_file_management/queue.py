@@ -9,7 +9,7 @@ class Queue:
 
     def enqueue(self, value):
         """Aqui irá sua implementação"""
-        if not value in self._fila:
+        if value not in self._fila:
             self._fila.append(value)
 
     def dequeue(self):
